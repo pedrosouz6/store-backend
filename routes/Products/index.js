@@ -1,8 +1,8 @@
+const ControllersProduct = require('../../controllers/Products/index');
+
 const express = require('express');
 const router = express.Router();
 
-router.get('/teste', (req, res) => {
-    res.send('pedro');
-})
+router.post('/add/products', ControllersProduct.addProducts);
 
 module.exports = router;
