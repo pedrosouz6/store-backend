@@ -44,10 +44,22 @@ class ControllersProduct {
 
             return res.send({
                 error: false,
-                message: 'Produto cadastrado com sucesso!!!'
+                message: 'Produto cadastrado com sucesso!'
             });
         })
-    }   
+    }  
+    
+    getProducts(req, res) {
+        const sql = 'SELECT * FROM products ORDER BY id_product DESC';
+
+        connect.query(sql, (error, results) => {
+            if(error) {
+                return console.log(error);
+            }
+
+            return res.send({results});
+        })
+    }
 }
 
 module.exports = new ControllersProduct();
