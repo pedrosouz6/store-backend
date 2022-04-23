@@ -9,4 +9,4 @@ app.use(express.json());
 
 app.use('/api', RoutesProducts);
 
-app.listen('3333', () => console.log('Servido rodando'));
+app.listen('3333', () => console.log('Servidor rodando'));

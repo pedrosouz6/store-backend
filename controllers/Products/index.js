@@ -36,6 +36,7 @@ class ControllersProduct {
 
         connect.query(sql, (error, results) => {
             if(error) {
+                console.log(error)
                 return res.send({
                     error: true,
                     message: 'Erro ao cadastrar o produto'
@@ -54,10 +55,16 @@ class ControllersProduct {
 
         connect.query(sql, (error, results) => {
             if(error) {
-                return console.log(error);
+                return res.send({
+                    error: true,
+                    message: 'Banco de dados desligado'
+                });
             }
 
-            return res.send({results});
+            return res.send({
+                error: false,
+                results
+            });
         })
     }
 }
