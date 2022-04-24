@@ -67,6 +67,93 @@ class ControllersProduct {
             });
         })
     }
+
+    deleteProducts(req, res) {
+        const { id } = req.params;
+
+        const sql = `DELETE FROM products WHERE id_product = ${id}`;
+
+        connect.query(sql, (error, results) => {
+            if(error) {
+                return res.send({
+                    error: true,
+                    message: 'Erro ao deletar o produto'
+                })  
+            }
+
+            return res.send({
+                error: false,
+                message: 'Produto deletado com sucesso'
+            })
+        })
+    }
+
+    getOneProduct(req, res) {
+        const { id } = req.params;
+
+        const sql = `SELECT * FROM products WHERE id_product = ${id}`;
+
+        connect.query(sql, (error, results) => {
+            if(error) {
+                return res.send({
+                    error: true,
+                    message: 'Erro ao pegar o produto'
+                })  
+            }
+
+            if(results.length === 0) {
+                return res.send({
+                    error: true,
+                    message: 'Esse id de produto não existe'
+                })
+            }
+
+            return res.send({
+                error: false,
+                results
+            })
+        })
+    }
+
+    updateProduct(req, res) {
+        const { 
+            nameProduct,
+            brandProduct,
+            categoryProduct,
+            statusProduct,
+            amountProduct,
+            priceProduct,
+            urlImage,
+            descriptionProduct 
+        } = req.body;
+
+        const { id } = req.params;
+
+        const sql = `UPDATE products SET
+        name_product = '${nameProduct}', 
+        brand_product = '${brandProduct}', 
+        category_product = '${categoryProduct}', 
+        price_product = ${priceProduct}, 
+        amount_product = ${amountProduct}, 
+        status_product = ${statusProduct}, 
+        url_product = '${urlImage}', 
+        description_product = '${descriptionProduct}'
+        WHERE id_product = ${id}`;
+
+        connect.query(sql, (error, results) => {
+            if(error) {
+                return res.send({
+                    error: true,
+                    message: 'Erro ao atualizar o produto'
+                })
+            }
+
+            return res.send({
+                error: false,
+                message: 'Produto atualizado com sucesso'
+            })
+        })
+    }
 }
 
 module.exports = new ControllersProduct();
