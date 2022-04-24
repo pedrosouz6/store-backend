@@ -154,6 +154,42 @@ class ControllersProduct {
             })
         })
     }
+
+    filterProducts(req, res) {
+        const { 
+            nameProduct,
+            brandProduct,
+            categoryProduct,
+            statusValue } 
+        = req.body;
+
+        console.log({
+            nameProduct,
+            brandProduct,
+            categoryProduct,
+            statusValue
+        })
+            
+        const sql = `SELECT * FROM products 
+        WHERE name_product LIKE '%${nameProduct}%' &&
+        brand_product LIKE '%${brandProduct}%' &&
+        category_product LIKE '%${categoryProduct}%' &&
+        status_product LIKE '%${statusValue}%'
+        ORDER BY id_product DESC`;
+
+        connect.query(sql, (error, results) => {
+            if(error) {
+                return res.send({
+                    error: true,
+                    message: 'Banco de dados desligado filter'
+                });
+            }
+            return res.send({
+                error: false,
+                results
+            });
+        })
+    }
 }
 
 module.exports = new ControllersProduct();
