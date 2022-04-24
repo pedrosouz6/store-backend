@@ -160,15 +160,8 @@ class ControllersProduct {
             nameProduct,
             brandProduct,
             categoryProduct,
-            statusValue } 
-        = req.body;
-
-        console.log({
-            nameProduct,
-            brandProduct,
-            categoryProduct,
             statusValue
-        })
+        } = req.body;
             
         const sql = `SELECT * FROM products 
         WHERE name_product LIKE '%${nameProduct}%' &&
