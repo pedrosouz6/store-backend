@@ -24,8 +24,8 @@ class ControllersProduct {
             amount_product, 
             status_product, 
             url_product, 
-            description_product
-        ) VALUES (
+            description_product	 
+            ) VALUES (
             '${nameProduct}',
             '${brandProduct}',
             '${categoryProduct}',
@@ -142,7 +142,7 @@ class ControllersProduct {
         amount_product = ${amountProduct}, 
         status_product = ${statusProduct}, 
         url_product = '${urlImage}', 
-        description_product = '${descriptionProduct}'
+        description_product  = '${descriptionProduct}'
         WHERE id_product = ${id}`;
 
         connect.query(sql, (error, results) => {
@@ -165,13 +165,15 @@ class ControllersProduct {
             nameProduct,
             brandProduct,
             categoryProduct,
-            statusValue
+            statusValue,
+            genderProduct
         } = req.body;
-            
+
         const sql = `SELECT * FROM products 
         WHERE name_product LIKE '%${nameProduct}%' &&
         brand_product LIKE '%${brandProduct}%' &&
         category_product LIKE '%${categoryProduct}%' &&
+        gender_product LIKE '%${genderProduct}%' &&
         status_product LIKE '%${statusValue}%'
         ORDER BY id_product DESC`;
 
