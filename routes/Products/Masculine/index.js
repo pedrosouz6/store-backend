@@ -3,6 +3,6 @@ const ControllersProductMasculine = require('../../../controllers/Products/Mascu
 const express = require('express');
 const router = express.Router();
 
-router.get('/get/masculine', ControllersProductMasculine.getSlipper);
+router.get('/get/masculine', ControllersProductMasculine.getMasculine);
 
 module.exports = router;

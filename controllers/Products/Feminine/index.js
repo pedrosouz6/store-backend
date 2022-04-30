@@ -1,8 +1,8 @@
 const { connect } = require('../../../connection/index');
 
-class ControllersProductMasculine {
-    getMasculine(req, res) {
-        const sql = 'SELECT * FROM products WHERE gender_product = "Masculino"';
+class ControllersProductFeminine {
+    getFeminine(req, res) {
+        const sql = 'SELECT * FROM products WHERE gender_product = "Feminino"';
         connect.query(sql, (error, results) => {
             if(error) {
                 return res.send({
@@ -18,4 +18,4 @@ class ControllersProductMasculine {
     }
 }
 
-module.exports = new ControllersProductMasculine();
+module.exports = new ControllersProductFeminine();
