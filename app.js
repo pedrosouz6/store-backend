@@ -1,4 +1,5 @@
 const RoutesProducts = require('./routes/Products/index');
+const RoutesDetails = require('./routes/Products/Details/index');
 const RoutesProductsSneakers = require('./routes/Products/Sneakers/index');
 const RoutesProductsSlipper = require('./routes/Products/Slipper/index');
 const RoutesProductsMasculine = require('./routes/Products/Masculine/index');
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', RoutesProducts);
+app.use('/api', RoutesDetails);
 app.use('/api', RoutesProductsSneakers);
 app.use('/api', RoutesProductsSlipper);
 app.use('/api', RoutesProductsMasculine);
