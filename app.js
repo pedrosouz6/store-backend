@@ -6,6 +6,7 @@ const RoutesProductsMasculine = require('./routes/Products/Masculine/index');
 const RoutesProductsFeminine = require('./routes/Products/Feminine/index');
 
 const RoutesClient = require('./routes/Client/index');
+const RoutesSales = require('./routes/Sales/index');
 
 const express = require('express');
 const cors = require('cors');
@@ -22,5 +23,6 @@ app.use('/api', RoutesProductsMasculine);
 app.use('/api', RoutesProductsFeminine);
 
 app.use('/api', RoutesClient);
+app.use('/api', RoutesSales);
 
 app.listen('3333', () => console.log('Servidor rodando'));
