@@ -1,4 +1,5 @@
-const { send } = require('express/lib/response');
+const jwt = require('jsonwebtoken');
+const config = require('../../config/index');
 const { connect } = require('../../connection/index');
 
 class ControllersClient {
@@ -24,10 +25,15 @@ class ControllersClient {
                 });
             }
 
-            return res.send({   
+            return res.json({
                 error: false,
-                message: 'Cliente cadastrado com sucesso'
-            })
+                message: 'Cliente cadastrado com sucesso',
+                token: jwt.sign(
+                    {id: results.insertId},
+                    config.secret,
+                    {expiresIn: config.expireIn}
+                )
+            })  
         })
     }
 
