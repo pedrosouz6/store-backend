@@ -5,6 +5,8 @@ const RoutesProductsSlipper = require('./routes/Products/Slipper/index');
 const RoutesProductsMasculine = require('./routes/Products/Masculine/index');
 const RoutesProductsFeminine = require('./routes/Products/Feminine/index');
 
+const RoutesNewPassword = require('./routes/NewPassword/index');
+
 const RoutesClient = require('./routes/Client/index');
 const RoutesSales = require('./routes/Sales/index');
 
@@ -22,7 +24,10 @@ app.use('/api', RoutesProductsSlipper);
 app.use('/api', RoutesProductsMasculine);
 app.use('/api', RoutesProductsFeminine);
 
+app.use('/api', RoutesNewPassword);
+
 app.use('/api', RoutesClient);
 app.use('/api', RoutesSales);
+
 
 app.listen('3333', () => console.log('Servidor rodando'));
