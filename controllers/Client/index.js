@@ -25,15 +25,18 @@ class ControllersClient {
                 });
             }
 
-            return res.json({
+            return res.send({
                 error: false,
                 message: 'Cliente cadastrado com sucesso',
                 token: jwt.sign(
                     {id: results.insertId},
                     config.secret,
                     {expiresIn: config.expireIn}
-                )
-            })  
+                ),
+                user: {
+                    name: name
+                }
+            })      
         })
     }
 
@@ -62,7 +65,15 @@ class ControllersClient {
             if(results.length === 1) {
                 return res.send({
                     error: false,
-                    message: 'O usuário existe'
+                    message: 'O usuário existe',
+                    token: jwt.sign(
+                        {id: results[0].id_client},
+                        config.secret,
+                        {expiresIn: config.expireIn}
+                    ),
+                    user: {
+                        name: results[0].name_client
+                    }
                 })
             }
         })
