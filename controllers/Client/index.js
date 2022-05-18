@@ -34,7 +34,8 @@ class ControllersClient {
                     {expiresIn: config.expireIn}
                 ),
                 user: {
-                    name: name
+                    name: name,
+                    id: results.insertId
                 }
             })      
         })
@@ -72,7 +73,8 @@ class ControllersClient {
                         {expiresIn: config.expireIn}
                     ),
                     user: {
-                        name: results[0].name_client
+                        name: results[0].name_client,
+                        id: results[0].id_client
                     }
                 })
             }

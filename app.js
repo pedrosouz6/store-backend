@@ -10,6 +10,8 @@ const RoutesNewPassword = require('./routes/NewPassword/index');
 const RoutesClient = require('./routes/Client/index');
 const RoutesSales = require('./routes/Sales/index');
 
+const RoutesCart = require('./routes/Cart/index');
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -28,6 +30,8 @@ app.use('/api', RoutesNewPassword);
 
 app.use('/api', RoutesClient);
 app.use('/api', RoutesSales);
+
+app.use('/api', RoutesCart);
 
 
 app.listen('3333', () => console.log('Servidor rodando'));
