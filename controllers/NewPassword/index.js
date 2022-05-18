@@ -17,7 +17,12 @@ class ControllersNewPassword {
 
             return res.send({
                 error: false,
-                message: 'Senha alterada com sucesso'
+                message: 'Senha alterada com sucesso',
+                token: jwt.sign(
+                    {email: email},
+                    config.secret,
+                    {expiresIn: config.expireIn}
+                )
             })
         })
 
