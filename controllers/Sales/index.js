@@ -21,7 +21,10 @@ class ControllersSales {
                     return console.log(error);
                 }
     
-                return console.log(results);
+                return res.send({
+                    error: false,
+                    message: 'Compra realizada com sucesso'
+                });
             })
         }
     }
@@ -35,7 +38,7 @@ class ControllersSales {
         products.price_product,
         products.url_product,
         client.name_client 
-        FROM ((buy 
+        FROM ((buy  
             INNER JOIN client ON client.id_client = buy.id_client)
             INNER JOIN products ON products.id_product = buy.id_product)
         `;
